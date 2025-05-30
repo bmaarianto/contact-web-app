@@ -1,0 +1,41 @@
+<% if(!contact) { %>
+<div
+  class="max-w-screen-md mx-auto mt-6 p-6 bg-white shadow-md rounded text-center"
+>
+  <h1 class="text-2xl font-bold mb-4 text-red-600">Kontak Tidak Ditemukan</h1>
+  <p class="mb-6 text-gray-700">Maaf, kontak yang Anda cari tidak tersedia.</p>
+  <a
+    href="/contact"
+    class="inline-block bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
+  >
+    Kembali ke Daftar Kontak
+  </a>
+</div>
+
+<%} else { %>
+<div class="max-w-screen-md mx-auto mt-6 p-6 bg-white shadow-md rounded">
+  <h1 class="text-2xl font-bold mb-4">Detail Kontak</h1>
+
+  <div class="mb-4">
+    <p class="text-lg font-semibold">Nama:</p>
+    <p class="text-gray-700"><%= contact.name %></p>
+  </div>
+
+  <div class="mb-4">
+    <p class="text-lg font-semibold">Nomor HP:</p>
+    <p class="text-gray-700">📞 <%= contact.phoneNumber %></p>
+  </div>
+
+  <div class="mb-6">
+    <p class="text-lg font-semibold">Email:</p>
+    <p class="text-gray-700">✉️ <%= contact.email %></p>
+  </div>
+
+  <a
+    href="/contact"
+    class="inline-block bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
+  >
+    Kembali ke Daftar Kontak
+  </a>
+</div>
+<%} %>

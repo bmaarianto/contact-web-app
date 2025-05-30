@@ -1,0 +1,59 @@
+<% if(contacts.length === 0) { %>
+<div class="max-w-screen-lg mx-auto mt-6">
+  <h1 class="text-2xl font-bold mb-4">Daftar Kontak</h1>
+
+  <div class="bg-white shadow-md rounded p-4">
+    <% if (!contacts || contacts.length === 0) { %>
+    <p class="text-gray-500 italic">Tidak ada kontak yang ditemukan.</p>
+    <% } else { %>
+    <ul class="divide-y divide-gray-200">
+      <% contacts.forEach(contact => { %>
+      <li class="py-3 flex justify-between items-center">
+        <div>
+          <p class="text-lg font-semibold"><%= contact.name %></p>
+          <p class="text-sm text-gray-600">
+            📞 <%= contact.phoneNumber %> | ✉️ <%= contact.email %>
+          </p>
+        </div>
+        <a
+          href="/contact/<%= contact.phoneNumber %>"
+          class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition"
+        >
+          Detail
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+    <% } %>
+  </div>
+</div>
+
+<% } else { %>
+<div class="max-w-screen-lg mx-auto mt-6">
+  <h1 class="text-2xl font-bold mb-4">Daftar Kontak</h1>
+  <div class="bg-white shadow-md rounded p-4">
+    <% if (contacts.length === 0) { %>
+    <p class="text-gray-500">Belum ada kontak.</p>
+    <% } else { %>
+    <ul class="divide-y divide-gray-200">
+      <% contacts.forEach(contact => { %>
+      <li class="py-3 flex justify-between items-center">
+        <div>
+          <p class="text-lg font-semibold"><%= contact.name %></p>
+          <p class="text-sm text-gray-600">
+            📞 <%= contact.phoneNumber %> | ✉️ <%= contact.email %>
+          </p>
+        </div>
+        <a
+          href="/contact/<%= contact.phoneNumber %>"
+          class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition"
+        >
+          Detail
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+    <% } %>
+  </div>
+</div>
+<% } %>

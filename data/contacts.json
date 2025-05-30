@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Andi Pratama",
+    "phoneNumber": "081234567890",
+    "email": "andi@example.com"
+  },
+  {
+    "name": "Budi Santoso",
+    "phoneNumber": "082345678901",
+    "email": "budi@example.com"
+  },
+  {
+    "name": "Citra Lestari",
+    "phoneNumber": "083456789012",
+    "email": "citra@example.com"
+  },
+  {
+    "name": "Dewi Anggraini",
+    "phoneNumber": "084567890123",
+    "email": "dewi@example.com"
+  },
+  {
+    "name": "Eko Wibowo",
+    "phoneNumber": "085678901234",
+    "email": "eko@example.com"
+  }
+]
