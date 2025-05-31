@@ -55,24 +55,6 @@ node app.js
 http://localhost:3000
 ```
 
-## 📁 Struktur Folder
-
-.
-├── app.js
-├── data
-│ └── contacts.json
-├── utils
-│ └── contacts.js
-├── views
-│ ├── layouts
-│ │ ├── main-layout.ejs
-│ │ └── nav.ejs
-│ ├── index.ejs
-│ ├── contact.ejs
-│ ├── detail.ejs
-│ ├── add-contact.ejs
-│ └── edit-contact.ejs
-
 ## 💾 Penyimpanan Data
 
 Data disimpan secara lokal di file data/contacts.json. Tidak menggunakan database eksternal.
