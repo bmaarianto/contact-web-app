@@ -23,12 +23,12 @@
 
   <div class="mb-4">
     <p class="text-lg font-semibold">Nomor HP:</p>
-    <p class="text-gray-700">📞 <%= contact.phoneNumber %></p>
+    <p class="text-gray-700"><%= contact.phoneNumber %></p>
   </div>
 
   <div class="mb-6">
     <p class="text-lg font-semibold">Email:</p>
-    <p class="text-gray-700">✉️ <%= contact.email %></p>
+    <p class="text-gray-700"><%= contact.email %></p>
   </div>
 
   <a
@@ -36,6 +36,21 @@
     class="inline-block bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition"
   >
     Kembali ke Daftar Kontak
+  </a>
+
+  <a
+    href="/contact/edit/<%= contact.phoneNumber %>"
+    class="inline-block ml-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
+  >
+    Ubah Kontak
+  </a>
+
+  <a
+    href="/contact/delete/<%= contact.phoneNumber %>"
+    class="inline-block ml-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+    onclick="return confirm('Yakin ingin menghapus kontak ini?');"
+  >
+    Hapus Kontak
   </a>
 </div>
 <%} %>

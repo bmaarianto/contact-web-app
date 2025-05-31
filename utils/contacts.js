@@ -39,4 +39,33 @@ const duplicateCheck = (phoneNumber) => {
   return contacts.find((contact) => contact.phoneNumber === phoneNumber);
 };
 
-module.exports = { loadContact, findContact, addContact, duplicateCheck };
+const deleteContact = (phoneNumber) => {
+  const contacts = loadContact();
+  const filteredContacts = contacts.filter(
+    (contact) => contact.phoneNumber !== phoneNumber
+  );
+  saveContacts(filteredContacts);
+};
+
+const updateContacts = (newContact) => {
+  const contacts = loadContact();
+
+  const filteredContacts = contacts.filter(
+    (contact) => contact.phoneNumber !== newContact.oldPhoneNumber
+  );
+
+  delete newContact.oldPhoneNumber;
+
+  filteredContacts.push(newContact);
+
+  saveContacts(filteredContacts);
+};
+
+module.exports = {
+  loadContact,
+  findContact,
+  addContact,
+  duplicateCheck,
+  deleteContact,
+  updateContacts,
+};

@@ -6,6 +6,8 @@ const {
   findContact,
   addContact,
   duplicateCheck,
+  deleteContact,
+  updateContacts,
 } = require("./utils/contacts");
 const { redirect } = require("express/lib/response");
 const { body, validationResult, check } = require("express-validator");
@@ -74,7 +76,6 @@ app.post(
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // return res.status(400).json({ errors: errors.array() });
       res.render("add-contact", {
         title: "Tambah Kontak",
         layout: "layouts/main-layout",
@@ -83,6 +84,59 @@ app.post(
     } else {
       addContact(req.body);
       req.flash("msg", "Kontak berhasil disimpan");
+      res.redirect("/contact");
+    }
+  }
+);
+
+app.get("/contact/delete/:phoneNumber", (req, res) => {
+  const contact = findContact(req.params.phoneNumber);
+
+  if (!contact) {
+    return res.status(404).send("Kontak tidak ditemukan");
+  } else {
+    deleteContact(req.params.phoneNumber);
+    req.flash("msg", "Kontak berhasil dihapus");
+    res.redirect("/contact");
+  }
+});
+
+app.get("/contact/edit/:phoneNumber", (req, res) => {
+  const contact = findContact(req.params.phoneNumber);
+
+  res.render("edit-contact", {
+    title: "Ubah Kontak",
+    layout: "layouts/main-layout",
+    contact,
+    errors: [],
+  });
+});
+
+app.post(
+  "/contact/update",
+  [
+    body("phoneNumber").custom((value, { req }) => {
+      const duplicate = duplicateCheck(value);
+      if (value !== req.body.oldPhoneNumber && duplicate) {
+        throw new Error("Nomor HP sudah terdaftar");
+      }
+      return true;
+    }),
+    check("email", "Email tidak valid").isEmail(),
+    check("phoneNumber", "Nomor HP tidak valid").isMobilePhone("id-ID"),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("edit-contact", {
+        title: "Ubah Kontak",
+        layout: "layouts/main-layout",
+        errors: errors.array(),
+        contact: req.body,
+      });
+    } else {
+      updateContacts(req.body);
+      req.flash("msg", "Kontak berhasil diubah");
       res.redirect("/contact");
     }
   }

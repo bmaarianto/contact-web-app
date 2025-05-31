@@ -5,7 +5,7 @@
       href="/contact/add"
       class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
     >
-      + Tambah Kontak
+      Tambah Kontak
     </a>
   </div>
   <% if (msg.length !== 0) { %>
@@ -26,7 +26,7 @@
         <div>
           <p class="text-lg font-semibold"><%= contact.name %></p>
           <p class="text-sm text-gray-600">
-            📞 <%= contact.phoneNumber %> | ✉️ <%= contact.email %>
+            <%= contact.phoneNumber %> | <%= contact.email %>
           </p>
         </div>
         <a
