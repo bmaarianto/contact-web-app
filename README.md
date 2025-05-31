@@ -1,41 +1,47 @@
-# Contact App
+# 📇 Contact Web App
 
-A simple contact management web application built with **Express.js**, **EJS**, and **Tailwind CSS**.
+A simple contact management web application built with **Node.js**, **Express**, **EJS**, and **Tailwind CSS**. This app allows users to view a list of contacts, see contact details, and add new contacts with validation and error handling.
 
-## Features
+## ✨ Features
 
-- View a list of contacts
-- See contact details (name, phone number, email)
-- Handle not-found contacts
-- Clean UI using Tailwind CSS
-- Server-side rendering with EJS and layout support
+- View a list of saved contacts
+- View detailed information of each contact
+- Add new contacts (name, phone number, email)
+- Input validation (duplicate phone numbers, valid email and phone format)
+- Flash messages on successful submission
+- Custom error messages on invalid form submissions
+- Responsive UI with Tailwind CSS
 
-## Tech Stack
+## 🚀 Technologies Used
 
 - Node.js
 - Express.js
-- EJS & ejs-express-layouts
+- EJS (Embedded JavaScript templates)
+- express-ejs-layouts
+- express-validator
 - Tailwind CSS
 
-## Installation
+## 📷 Screenshots
 
-### 1. Clone the repository:
+Coming soon...
+
+## 📦 Installation
+
+### 1. **Clone this repo**
 
 ```
-git clone https://github.com/your-username/contact-web-app.git
+git clone https://github.com/bmaarianto/contact-web-app.git
 cd contact-web-app
 ```
 
-### 2. Install dependencies:
+### 2. Install dependencies
 
 ```
 npm install
 ```
 
-### 3. Run the server:
+### 3. Run the development server
 
 ```
-npm start
+node app.js
 ```
-
-The app will be running at http://localhost:3000.
