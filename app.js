@@ -1,7 +1,17 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 
-const { loadContact, findContact } = require("./utils/contacts");
+const {
+  loadContact,
+  findContact,
+  addContact,
+  duplicateCheck,
+} = require("./utils/contacts");
+const { redirect } = require("express/lib/response");
+const { body, validationResult, check } = require("express-validator");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
 
 const app = express();
 const port = 3000;
@@ -9,6 +19,18 @@ const port = 3000;
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser("secret"));
+app.use(
+  session({
+    cookie: { maxAge: 6000 },
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(flash());
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Home", layout: "layouts/main-layout" });
@@ -24,8 +46,47 @@ app.get("/contact", (req, res) => {
     title: "Contact",
     layout: "layouts/main-layout",
     contacts,
+    msg: req.flash("msg"),
   });
 });
+
+app.get("/contact/add", (req, res) => {
+  res.render("add-contact", {
+    title: "Tambah Kontak",
+    layout: "layouts/main-layout",
+    errors: [],
+  });
+});
+
+app.post(
+  "/contact",
+  [
+    body("phoneNumber").custom((value) => {
+      const duplicate = duplicateCheck(value);
+      if (duplicate) {
+        throw new Error("Nomor HP sudah terdaftar");
+      }
+      return true;
+    }),
+    check("email", "Email tidak valid").isEmail(),
+    check("phoneNumber", "Nomor HP tidak valid").isMobilePhone("id-ID"),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // return res.status(400).json({ errors: errors.array() });
+      res.render("add-contact", {
+        title: "Tambah Kontak",
+        layout: "layouts/main-layout",
+        errors: errors.array(),
+      });
+    } else {
+      addContact(req.body);
+      req.flash("msg", "Kontak berhasil disimpan");
+      res.redirect("/contact");
+    }
+  }
+);
 
 app.get("/contact/:phoneNumber", (req, res) => {
   const contact = findContact(req.params.phoneNumber);
