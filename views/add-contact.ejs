@@ -1,5 +1,7 @@
-<div class="max-w-screen-md mx-auto mt-6">
-  <h1 class="text-2xl font-bold mb-4">Tambah Kontak</h1>
+<div class="max-w-screen-md mx-auto mt-6 px-4">
+  <h1 class="text-2xl font-bold mb-4 text-center sm:text-left">
+    Tambah Kontak
+  </h1>
 
   <% if (errors.length > 0) { %>
   <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
@@ -70,16 +72,16 @@
     </div>
 
     <!-- Tombol -->
-    <div class="flex justify-end space-x-4 pt-4">
+    <div class="flex flex-col sm:flex-row sm:justify-end gap-3 pt-4">
       <a
         href="/contact"
-        class="inline-block bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
+        class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition text-center"
       >
         Batal
       </a>
       <button
         type="submit"
-        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition text-center"
       >
         Simpan
       </button>

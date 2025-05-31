@@ -1,28 +1,68 @@
 <nav class="bg-blue-600 text-white px-4 py-3 shadow">
-  <div class="container mx-auto flex justify-between items-center">
-    <a href="/" class="text-xl font-semibold hover:text-gray-200">ContactApp</a>
-    <ul class="flex space-x-4">
+  <div class="container mx-auto flex flex-wrap items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="text-xl font-semibold hover:text-gray-200">
+      ContactApp
+    </a>
+
+    <!-- Hamburger button (tampil di mobile saja) -->
+    <button
+      id="nav-toggle"
+      class="sm:hidden block focus:outline-none text-white"
+      onclick="document.getElementById('nav-menu').classList.toggle('hidden')"
+      aria-label="Toggle menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+    </button>
+
+    <!-- Menu Navigasi -->
+    <ul
+      id="nav-menu"
+      class="w-full sm:w-auto sm:flex space-y-2 sm:space-y-0 sm:space-x-4 mt-4 sm:mt-0 hidden sm:block"
+    >
       <li>
         <a
           href="/"
-          class="hover:text-gray-300 <%= title === 'Home' ? 'font-bold underline' : '' %>"
+          class="block sm:inline hover:text-gray-300 <%= title === 'Home' ? 'font-bold underline' : '' %>"
           >Home</a
         >
       </li>
       <li>
         <a
           href="/about"
-          class="hover:text-gray-300 <%= title === 'About' ? 'font-bold underline' : '' %>"
+          class="block sm:inline hover:text-gray-300 <%= title === 'About' ? 'font-bold underline' : '' %>"
           >About</a
         >
       </li>
       <li>
         <a
           href="/contact"
-          class="hover:text-gray-300 <%= title === 'Contact' ? 'font-bold underline' : '' %>"
+          class="block sm:inline hover:text-gray-300 <%= title === 'Contact' ? 'font-bold underline' : '' %>"
           >Contact</a
         >
       </li>
     </ul>
   </div>
 </nav>
+
+<script>
+  // Jika layar diubah ukurannya ke desktop, pastikan menu tampil
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 640) {
+      document.getElementById("nav-menu").classList.remove("hidden");
+    }
+  });
+</script>

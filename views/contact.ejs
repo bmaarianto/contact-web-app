@@ -1,16 +1,19 @@
-<div class="max-w-screen-lg mx-auto mt-6">
-  <div class="flex justify-between items-center mb-4">
+<div class="max-w-screen-lg mx-auto mt-6 px-4">
+  <div
+    class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3"
+  >
     <h1 class="text-2xl font-bold">Daftar Kontak</h1>
     <a
       href="/contact/add"
-      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition w-full md:w-auto text-center"
     >
       Tambah Kontak
     </a>
   </div>
+
   <% if (msg.length !== 0) { %>
   <div
-    class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded"
+    class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded text-sm sm:text-base"
   >
     <%= msg %>
   </div>
@@ -22,7 +25,9 @@
     <% } else { %>
     <ul class="divide-y divide-gray-200">
       <% contacts.forEach(contact => { %>
-      <li class="py-3 flex justify-between items-center">
+      <li
+        class="py-3 flex flex-col sm:flex-row justify-between sm:items-center gap-2"
+      >
         <div>
           <p class="text-lg font-semibold"><%= contact.name %></p>
           <p class="text-sm text-gray-600">
@@ -31,7 +36,7 @@
         </div>
         <a
           href="/contact/<%= contact.phoneNumber %>"
-          class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition"
+          class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition w-full sm:w-auto text-center"
         >
           Detail
         </a>
