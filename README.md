@@ -1,47 +1,78 @@
 # 📇 Contact Web App
 
-A simple contact management web application built with **Node.js**, **Express**, **EJS**, and **Tailwind CSS**. This app allows users to view a list of contacts, see contact details, and add new contacts with validation and error handling.
+Aplikasi manajemen kontak sederhana berbasis web yang dibuat menggunakan **Node.js**, **Express**, dan **EJS**. Aplikasi ini memungkinkan pengguna untuk menambah, melihat detail, mengubah, dan menghapus kontak secara mudah melalui antarmuka web yang responsif.
 
-## ✨ Features
+## 🚀 Fitur
 
-- View a list of saved contacts
-- View detailed information of each contact
-- Add new contacts (name, phone number, email)
-- Input validation (duplicate phone numbers, valid email and phone format)
-- Flash messages on successful submission
-- Custom error messages on invalid form submissions
-- Responsive UI with Tailwind CSS
+- ✅ Menampilkan daftar semua kontak
+- ➕ Menambahkan kontak baru
+- 📝 Mengedit kontak yang sudah ada
+- ❌ Menghapus kontak
+- 🔍 Melihat detail kontak
+- 🔔 Flash message saat kontak berhasil ditambah, diubah, atau dihapus
+- 📄 Validasi input menggunakan `express-validator`
+- 🖼️ Tampilan responsif dengan Tailwind CSS
 
-## 🚀 Technologies Used
+## 🛠️ Teknologi
 
-- Node.js
-- Express.js
-- EJS (Embedded JavaScript templates)
-- express-ejs-layouts
-- express-validator
-- Tailwind CSS
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- [EJS](https://ejs.co/)
+- [express-ejs-layouts](https://www.npmjs.com/package/express-ejs-layouts)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [express-validator](https://express-validator.github.io/)
 
-## 📷 Screenshots
+## 📦 Instalasi
 
-Coming soon...
-
-## 📦 Installation
-
-### 1. **Clone this repo**
+### 1. **Clone repositori ini**
 
 ```
 git clone https://github.com/bmaarianto/contact-web-app.git
 cd contact-web-app
 ```
 
-### 2. Install dependencies
+### 2. **Install dependency**
 
 ```
 npm install
 ```
 
-### 3. Run the development server
+### 3. **Jalankan aplikasi**
+
+```
+npm start
+```
+
+atau
 
 ```
 node app.js
 ```
+
+### 4. **Buka di browser**
+
+```
+http://localhost:3000
+```
+
+## 📁 Struktur Folder
+
+.
+├── app.js
+├── data
+│ └── contacts.json
+├── utils
+│ └── contacts.js
+├── views
+│ ├── layouts
+│ │ ├── main-layout.ejs
+│ │ └── nav.ejs
+│ ├── index.ejs
+│ ├── contact.ejs
+│ ├── detail.ejs
+│ ├── add-contact.ejs
+│ └── edit-contact.ejs
+
+## 💾 Penyimpanan Data
+
+Data disimpan secara lokal di file data/contacts.json. Tidak menggunakan database eksternal.
